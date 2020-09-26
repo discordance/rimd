@@ -197,11 +197,12 @@ impl MidiMessage {
             -1 => { return Err(MidiError::OtherErr("Don't handle variable sized yet")); }
             -2 => {
                 // skip SysEx message
-                while {
-                    let byte = read_byte(reader)?;
-                    ret.push(byte);
-                    byte != Status::SysExEnd as u8
-                } {}
+                {}
+                // while {
+                //     let byte = read_byte(reader)?;
+                //     ret.push(byte);
+                //     byte != Status::SysExEnd as u8
+                // } {}
             }
             _ =>  { return Err(MidiError::InvalidStatus(stat)); }
         }
